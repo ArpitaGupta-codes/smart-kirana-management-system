@@ -18,6 +18,8 @@ function Sidebar() {
         <Link to="/categories" className="nav-link text-white px-4 py-2">Categories</Link>
         <Link to="/suppliers" className="nav-link text-white px-4 py-2">Suppliers</Link>
         <Link to="/customers" className="nav-link text-white px-4 py-2">Customers</Link>
+        <Link to="/purchases" className="nav-link text-white px-4 py-2">Purchases</Link>
+        <Link to="/sales" className="nav-link text-white px-4 py-2">Sales</Link>
       </nav>
     </div>
   );
