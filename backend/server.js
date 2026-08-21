@@ -13,6 +13,7 @@ const dashboardRoutes = require('./routes/dashboardRoutes');
 const purchaseRoutes = require('./routes/purchaseRoutes');
 const saleRoutes = require('./routes/saleRoutes');
 const creditRoutes = require('./routes/creditRoutes');
+const expenseRoutes = require('./routes/expenseRoutes');
 
 const app = express();
 
@@ -35,6 +36,7 @@ app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/purchases', purchaseRoutes);
 app.use('/api/sales', saleRoutes);
 app.use('/api/credits', creditRoutes);
+app.use('/api/expenses', expenseRoutes);
 
 app.listen(PORT, async () => {
   console.log(`Server chal raha hai: http://localhost:${PORT}`);

@@ -21,6 +21,7 @@ function Sidebar() {
         <Link to="/purchases" className="nav-link text-white px-4 py-2">Purchases</Link>
         <Link to="/sales" className="nav-link text-white px-4 py-2">Sales</Link>
         <Link to="/credits" className="nav-link text-white px-4 py-2">Udhaar</Link>
+        <Link to="/expenses" className="nav-link text-white px-4 py-2">Expenses</Link>
       </nav>
     </div>
   );
