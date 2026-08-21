@@ -20,6 +20,7 @@ function Sidebar() {
         <Link to="/customers" className="nav-link text-white px-4 py-2">Customers</Link>
         <Link to="/purchases" className="nav-link text-white px-4 py-2">Purchases</Link>
         <Link to="/sales" className="nav-link text-white px-4 py-2">Sales</Link>
+        <Link to="/credits" className="nav-link text-white px-4 py-2">Udhaar</Link>
       </nav>
     </div>
   );
