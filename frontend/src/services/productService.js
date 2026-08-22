@@ -1,5 +1,4 @@
-import axios from 'axios';
-
+import axios from './axiosConfig';
 const API_URL = 'http://localhost:5000/api/products';
 
 export const getProducts = async () => {

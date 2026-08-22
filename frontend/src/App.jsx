@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
+import ProtectedRoute from './components/ProtectedRoute';
+import { useAuth } from './context/AuthContext';
 import Dashboard from './pages/Dashboard';
 import Products from './pages/Products';
 import Categories from './pages/Categories';
@@ -9,26 +11,36 @@ import Purchases from './pages/Purchases';
 import Sales from './pages/Sales';
 import Credits from './pages/Credits';
 import Expenses from './pages/Expenses';
+import Login from './pages/Login';
+
+function AppLayout() {
+  const { user } = useAuth();
+
+  return (
+    <div style={{ display: 'flex' }}>
+      {user && <Sidebar />}
+      <div style={{ flex: 1, padding: user ? '20px' : '0' }}>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+          <Route path="/products" element={<ProtectedRoute><Products /></ProtectedRoute>} />
+          <Route path="/categories" element={<ProtectedRoute><Categories /></ProtectedRoute>} />
+          <Route path="/suppliers" element={<ProtectedRoute><Suppliers /></ProtectedRoute>} />
+          <Route path="/customers" element={<ProtectedRoute><Customers /></ProtectedRoute>} />
+          <Route path="/purchases" element={<ProtectedRoute><Purchases /></ProtectedRoute>} />
+          <Route path="/sales" element={<ProtectedRoute><Sales /></ProtectedRoute>} />
+          <Route path="/credits" element={<ProtectedRoute><Credits /></ProtectedRoute>} />
+          <Route path="/expenses" element={<ProtectedRoute><Expenses /></ProtectedRoute>} />
+        </Routes>
+      </div>
+    </div>
+  );
+}
 
 function App() {
   return (
     <BrowserRouter>
-      <div style={{ display: 'flex' }}>
-        <Sidebar />
-        <div style={{ flex: 1, padding: '20px' }}>
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/categories" element={<Categories />} />
-            <Route path="/suppliers" element={<Suppliers />} />
-            <Route path="/customers" element={<Customers />} />
-            <Route path="/purchases" element={<Purchases />} />
-            <Route path="/sales" element={<Sales />} />
-            <Route path="/credits" element={<Credits />} />
-            <Route path="/expenses" element={<Expenses />} />
-          </Routes>
-        </div>
-      </div>
+      <AppLayout />
     </BrowserRouter>
   );
 }

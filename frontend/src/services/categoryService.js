@@ -1,5 +1,4 @@
-import axios from 'axios';
-
+import axios from './axiosConfig';
 // Humara backend jahan chal raha hai
 const API_URL = 'http://localhost:5000/api/categories';
 

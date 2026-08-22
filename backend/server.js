@@ -5,6 +5,9 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./config/swagger');
 
 const { testConnection } = require('./config/db');
+const { protect } = require('./middleware/authMiddleware');
+
+const authRoutes = require('./routes/authRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 const productRoutes = require('./routes/productRoutes');
 const supplierRoutes = require('./routes/supplierRoutes');
@@ -28,15 +31,19 @@ app.get('/', (req, res) => {
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-app.use('/api/categories', categoryRoutes);
-app.use('/api/products', productRoutes);
-app.use('/api/suppliers', supplierRoutes);
-app.use('/api/customers', customerRoutes);
-app.use('/api/dashboard', dashboardRoutes);
-app.use('/api/purchases', purchaseRoutes);
-app.use('/api/sales', saleRoutes);
-app.use('/api/credits', creditRoutes);
-app.use('/api/expenses', expenseRoutes);
+// Auth routes - login/register ke liye login ki zaroorat nahi (obviously)
+app.use('/api/auth', authRoutes);
+
+// In sab routes ke liye ab login zaroori hai - "protect" middleware pehle chalega
+app.use('/api/categories', protect, categoryRoutes);
+app.use('/api/products', protect, productRoutes);
+app.use('/api/suppliers', protect, supplierRoutes);
+app.use('/api/customers', protect, customerRoutes);
+app.use('/api/dashboard', protect, dashboardRoutes);
+app.use('/api/purchases', protect, purchaseRoutes);
+app.use('/api/sales', protect, saleRoutes);
+app.use('/api/credits', protect, creditRoutes);
+app.use('/api/expenses', protect, expenseRoutes);
 
 app.listen(PORT, async () => {
   console.log(`Server chal raha hai: http://localhost:${PORT}`);
