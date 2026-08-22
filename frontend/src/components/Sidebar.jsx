@@ -34,6 +34,7 @@ function Sidebar() {
         <Link to="/sales" className="nav-link text-white px-4 py-2">Sales</Link>
         <Link to="/credits" className="nav-link text-white px-4 py-2">Udhaar</Link>
         <Link to="/expenses" className="nav-link text-white px-4 py-2">Expenses</Link>
+        <Link to="/reports" className="nav-link text-white px-4 py-2">Reports</Link>
       </nav>
       <button onClick={handleLogout} className="btn btn-outline-light mx-3">Logout</button>
     </div>

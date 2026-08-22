@@ -11,6 +11,7 @@ import Purchases from './pages/Purchases';
 import Sales from './pages/Sales';
 import Credits from './pages/Credits';
 import Expenses from './pages/Expenses';
+import Reports from './pages/Reports';
 import Login from './pages/Login';
 
 function AppLayout() {
@@ -31,6 +32,7 @@ function AppLayout() {
           <Route path="/sales" element={<ProtectedRoute><Sales /></ProtectedRoute>} />
           <Route path="/credits" element={<ProtectedRoute><Credits /></ProtectedRoute>} />
           <Route path="/expenses" element={<ProtectedRoute><Expenses /></ProtectedRoute>} />
+          <Route path="/reports" element={<ProtectedRoute><Reports /></ProtectedRoute>} />
         </Routes>
       </div>
     </div>
